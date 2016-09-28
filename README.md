@@ -3,11 +3,11 @@ EventDrops
 
 A time based / event series interactive visualization using d3.js. Use drag and zoom to navigate in time. [See the demo](http://marmelab.com/EventDrops/)
 
-![EventDrops example](http://static.marmelab.com/EventDrops.gif)
+![EventDrops example](https://cloud.githubusercontent.com/assets/688373/18343222/c0a897b2-75b2-11e6-96df-e72e4b02335a.gif)
 
 ## Installation
 
-You can use `npm` to install event-drops
+You can use `npm` to install event-drops <sup>1</sup>
 
 ```
 npm install event-drops --save
@@ -84,7 +84,7 @@ EventDrops follows the [d3.js reusable charts pattern](http://bost.ocks.org/mike
 
 ```js
 var eventDropsChart = d3.chart.eventDrops()
-  .width(1200)
+  .hasDelimiter(false)
   .hasTopAxis(false);
 ```
 
@@ -98,9 +98,9 @@ Configurable values:
   - `labelsRightMargin`: margin between labels and drops lines. Defaults to `10`.
   - `axisFormat`: function receiving the d3 axis object, to customize tick number and size.
   - `tickFormat`: tickFormat for the X axis. See [d3.timeFormat.multi()](https://github.com/mbostock/d3/wiki/Time-Formatting#format_multi) for expected format.
-  - `eventHover`: function to be called when hovering an event in the chart. Receives the DOM element hovered (uses event delegation).
-  - `eventZoom`: function to be called when done zooming on the chart. Receives the d3 scale at the end of the zoom.
-  - `eventClick`: function to be called on click event of data-point (circle). Receives the DOM element hovered (uses event delegation).
+  - `mouseover`: function to be called when hovering an event in the chart. Receives the DOM element hovered (uses event delegation). Default: `() => {}`.
+  - `zoomend`: function to be called when done zooming on the chart. Receives the d3 scale at the end of the zoom. Default: `() => {}`.
+  - `click`: function to be called on click event of data-point (circle). Receives the DOM element hovered (uses event delegation). Default: `() => {}`.
   - `hasDelimiter`: whether to draw time boundaries on top of the chart. Defaults to `true`.
   - `hasTopAxis`: whether the chart has a top X axis. Accepts both a boolean or a function receiving the data of the graph that returns a boolean.
   - `hasBottomAxis`: same as topAxis but for the bottom X axis
@@ -111,6 +111,7 @@ Configurable values:
   - `mouseout`: event handler to execute when mouse leave a drop. Default: `() => {}`.
   - `zoomable`: *true* by default. Enable zoom-in/zoom-out and dragging handlers.
   - `date`: function that returns the date from each data point when passing objects. Defaults to `d=>d`.
+  - `customXAxis`: object with functions returning axis and scale `{xAxis: function(scale: d3.scale, where: string, width: number), xScale(width: number, timebound: [Date|number, Date|number])}`. When using this, `start`,  `end` and `locale` config will be ignored
 
 ## Styling
 
@@ -151,3 +152,6 @@ in the same PR. You can then rebuild it once merged.
 ## License
 
 EventDrops is released under the MIT License, courtesy of [marmelab](http://marmelab.com) and [Canal Plus](https://github.com/canalplus).
+
+## Footnotes
+1. The functionality and behaviour documented is not all available in the `0.2.0` release installed by `npm`

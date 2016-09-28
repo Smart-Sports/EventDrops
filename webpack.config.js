@@ -1,5 +1,5 @@
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var PRODUCTION = process.argv[2] === '-p';
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const PRODUCTION = process.argv[2] === '-p';
 
 module.exports = {
     entry: require('./webpack/entries')(PRODUCTION),
@@ -19,5 +19,6 @@ module.exports = {
     externals: {
         d3: 'd3',
     },
+    devtool: 'eval',
     plugins: require('./webpack/plugins')(PRODUCTION),
 };
