@@ -125,7 +125,6 @@ const chart = d3.chart.eventDrops()
     .end(new Date())
     .eventLineColor((d, i) => colors(i))
     .date(d => new Date(d.date))
-    .eventLineColor((d, i) => colors(i))
     .mouseover(showTooltip)
     .mouseout(hideTooltip)
     //.customXAxis({xAxis, xScale});
