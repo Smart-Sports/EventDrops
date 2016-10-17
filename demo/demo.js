@@ -127,6 +127,7 @@ const chart = d3.chart.eventDrops()
     .date(d => new Date(d.date))
     .mouseover(showTooltip)
     .mouseout(hideTooltip)
+    .hasExtremum(false)
     //.customXAxis({xAxis, xScale});
 
 const element = d3.select('#eventdrops-demo').datum(repositories.map(repository => ({
