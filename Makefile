@@ -28,4 +28,4 @@ test-watch: ## Run unit tests with hot reloading
 	./node_modules/.bin/karma start test/karma/karma.conf.js
 
 install: ## Install dependencies
-	npm install
+	yarn install
